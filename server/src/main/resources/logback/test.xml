@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Default logback configuration provided for import, equivalent to the programmatic
+initialization performed by Boot
+-->
+<configuration xmlns="http://ch.qos.logback/xml/ns/logback"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://ch.qos.logback/xml/ns/logback http://ch.qos.logback/xml/ns/logback/logback.xsd">
+    <property name="FILE_LOG_PATTERN" value="TEST: %date{yyyy/MM/dd HH:mm:ss} [%thread] %msg %logger %C{0}.%M:%L%n"/>
+    <property name="FILE_PATH" value="logs/test.log" />
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${FILE_PATH}</file>
+        <append>true</append>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+    </appender>
+
+    <property name="CONSOLE_LOG_PATTERN" value="TEST: %date{yyyy/MM/dd HH:mm:ss} [%thread] %msg %logger %C{0}.%M:%L%n"/>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
